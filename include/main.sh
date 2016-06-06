@@ -153,7 +153,9 @@ if [ "$depends_on" != "" ]; then
 fi
 
 sed -i 's|#useSSL#|'"$useSSL"'|g' docker-compose.yml
+sed -i 's|#TZ#|'"$TZ"'|g' docker-compose.yml
 sed -i 's|#frontend_dependencies#|'"$depends_on"'|g' docker-compose.yml
+
 
 #First idea: ln /var/log/auth.log $seedboxFiles/log/ssh/host.log
 # will not work because you can have a log rotation.

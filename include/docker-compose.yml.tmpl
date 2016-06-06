@@ -9,6 +9,7 @@ services:
     environment:
         - server_name=#server_name#
         - USE_SSL=#useSSL#
+        - TZ=#TZ#
 #frontend_dependencies#
     ports:
         - "80:80"
@@ -31,6 +32,7 @@ services:
     environment:
         - VIRTUAL_HOST=rtorrent
         - USE_SSL=#useSSL#
+        - TZ=#TZ#
     ports:
         - "49160-49175:49160-49175"
         - "49161-49175:49161-49175/udp"
@@ -44,7 +46,7 @@ services:
         - #seedboxFolder#/log/nginx-torrent:/var/log/nginx
 #rtorrent_end#
  fail2ban:
-    image: voobscout/base-deb:fail2ban
+    image: francois/fail2ban:latest
     container_name: seedboxdocker_fail2ban
     restart: always
     privileged: true
@@ -160,6 +162,7 @@ services:
     volumes:
         - #pwd#/htpasswd.txt:/etc/nginx/.htpasswd:ro
         - #seedboxFolder#/downloads:/downloads
+        - TZ=#TZ#
     environment:
         - PUBLICHOST=#server_name#
 #pureftpd_end#
