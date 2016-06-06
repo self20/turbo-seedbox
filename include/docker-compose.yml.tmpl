@@ -162,9 +162,9 @@ services:
     volumes:
         - #pwd#/htpasswd.txt:/etc/nginx/.htpasswd:ro
         - #seedboxFolder#/downloads:/downloads
-        - TZ=#TZ#
     environment:
         - PUBLICHOST=#server_name#
+        - TZ=#TZ#
 #pureftpd_end#
 
 networks:
